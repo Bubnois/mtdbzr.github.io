@@ -155,7 +155,7 @@
       .process-card:hover,
       .faq-item:hover {
         transform: translateY(-8px);
-        box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
+
         background-color: rgba(255, 255, 255, 0.06);
       }
       
@@ -178,7 +178,8 @@
       .faq-answer {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transition: max-height 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
       }
       .faq-item.active {
         background: rgba(255, 255, 255, 0.08);
