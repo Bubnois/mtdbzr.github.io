@@ -32,10 +32,7 @@
         z-index: -1;
         overflow: hidden;
         pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        --glow-x: 0vw;
-        --glow-y: 0vh;
+        opacity: 1;
       }
       .background-glow::after {
         content: '';
@@ -48,8 +45,6 @@
         opacity: 0.12;
         bottom: -250px;
         right: -250px;
-        transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transform: translate(var(--glow-x), var(--glow-y));
       }
 
       #noise-overlay {
@@ -69,7 +64,7 @@
         width: 100%;
         height: 100%;
         filter: url(#noiseFilter);
-        opacity: 0.29;
+        opacity: 0.18;
       }
 
       .gradient-overlay {
@@ -128,7 +123,7 @@
       .reveal {
         opacity: 0;
         transform: translateY(20px);
-        transition: all 0.6s ease-out;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
       }
       .reveal.active {
         opacity: 1;
@@ -145,7 +140,7 @@
       .contact-image-wrapper,
       .faq-item {
           border-radius: 0.5rem; /* default: rounded-lg */
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
       
       .service-card:hover, .service-card.expanded,
@@ -356,12 +351,13 @@
       </div>
     </header>
 
-    <!-- About -->
+  <!-- About -->
     <section id="about" class="pt-8 pb-16 px-6 md:px-12 max-w-7xl mx-auto scroll-mt-20">
         <!-- Section Header -->
         <div class="mb-4 max-w-3xl reveal">
-            <h2 class="text-4xl md:text-5xl font-host font-medium leading-tight">
-                <span class="text-[#A8B0A9]">меня зовут</span> Алина Базарова
+            <h2 class="font-host font-medium leading-tight">
+                <span class="block text-base md:text-lg text-[#A8B0A9]">меня зовут</span>
+                <span class="text-4xl md:text-5xl">Алина Базарова</span>
             </h2>
         </div>
 
@@ -1068,19 +1064,6 @@
               aboutContent.classList.toggle('expanded');
           });
       }
-
-      // Animated Noise Effect
-      const noiseTurbulence = document.querySelector('#noiseFilter feTurbulence');
-      let noiseFrame;
-
-      const animateNoise = () => {
-        const seed = Math.random() * 100;
-        noiseTurbulence.setAttribute('seed', seed.toString());
-        noiseFrame = requestAnimationFrame(animateNoise);
-      };
-      
-      // Start the animation
-      noiseFrame = requestAnimationFrame(animateNoise);
     </script>
   <script type="module" src="/index.tsx"></script>
 </body>
